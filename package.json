@@ -1,0 +1,22 @@
+{
+  "name": "node_api_demo",
+  "version": "1.0.0",
+  "description": "demo application for api using node",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hardik Patel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mocha": "^4.1.0",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.0-rc0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "validator": "^9.2.0"
+  }
+}
