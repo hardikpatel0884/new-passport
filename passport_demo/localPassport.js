@@ -2,6 +2,7 @@ const express = require('express'),
     passport = require('passport'),
     { config } = require('./../config/config'),
     { User } = require('./../models/user'),
+    { findMyUser } = require('./passportConfig/a'),
     LocalStrategy = require('passport-local').Strategy,
     bodyParser = require('body-parser'),
     app = express();
@@ -28,6 +29,7 @@ passport.use(new LocalStrategy((username, password, done) => {
         if (user.password !== password) { return done(null, false); }
         return done(null, user);
     });*/
+    //return done(null, { 'email': username, 'passwprd': password })
     process.nextTick(() => {
         console.log('dfa');
         User.findOne({ 'email': username }).then((user) => {
@@ -40,10 +42,9 @@ passport.use(new LocalStrategy((username, password, done) => {
 }));
 
 app.post('/auth/login', passport.authenticate('local', {
-    successRedirct: '/done',
+    successRedirect: '/done',
     faiurRedirect: '/fail',
-    failureFlash: true
-}), (req, res) => { res.send('fa') });
+}));
 
 app.get('/done', (req, res) => {
     res.status(200).send("success").end();
@@ -62,5 +63,12 @@ app.get('/users', (req, res) => {
         res.status(400).send(e);
     });
 });
+
+app.get('/at/:email', (req, res) => {
+    findMyUser(req.params.email, (err, user) => {
+        if (err) { res.send(err).end() }
+        res.send(user);
+    });
+})
 
 app.listen(config.port, () => { console.log(`app reun on port ${config.port}`) })
