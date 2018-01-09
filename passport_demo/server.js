@@ -30,4 +30,5 @@ app.get('/profile', (req, res) => {
 app.get('/', (req, res) => {
     res.send('raigyu bhai');
 })
+
 app.listen(config.port, () => { console.log(`server listen on port ${config.port}`) });

@@ -101,6 +101,15 @@ app.post('/user', (req, res) => {
     user.save().then((result) => { res.status(201).send(result) }, (e) => { res.status(400).send(e) });
 });
 
+app.get('/users', (req, res) => {
+
+    User.find().then((todos) => {
+        res.status(200).send({ todos });
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 app.listen(3000, () => {
 
 });
