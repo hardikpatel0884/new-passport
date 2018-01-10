@@ -1,6 +1,7 @@
 /**
  * localPassport.js
  * use to authenticate user locally
+ * author: Hardik Patel
  * */
 const express = require('express'), /* express */
     passport = require('passport'), /* passport */
